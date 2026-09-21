@@ -1,7 +1,7 @@
 # Job Listing Application
 
-![Image Alt](https://github.com/devanandhhh/job_listing_app/edit/main/README.md#:~:text=job_listing_thumnail)
-![Image Alt](https://github.com/devanandhhh/job_listing_app/edit/main/README.md#:~:text=job_listing_thumnail2)
+![Image Alt](https://github.com/devanandhhh/job_listing_app/blob/main/job_listing_thumnail.png)
+![Image Alt](https://github.com/devanandhhh/job_listing_app/blob/main/job_listing_thumnail2.png)
 
 A new Flutter project.
 
