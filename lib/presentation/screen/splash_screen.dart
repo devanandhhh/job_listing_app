@@ -28,9 +28,10 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 900),
     );
 
-    _scale = Tween<double>(begin: 0.7, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scale = Tween<double>(
+      begin: 0.7,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _fade = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
 
@@ -41,9 +42,9 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> _goNext() async {
     await Future.delayed(const Duration(milliseconds: 2000));
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => widget.nextScreen),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (_) => widget.nextScreen));
   }
 
   @override
@@ -55,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5A4FE0),
+      backgroundColor: Color(0xFF195119),
       body: Center(
         child: FadeTransition(
           opacity: _fade,
@@ -63,11 +64,15 @@ class _SplashScreenState extends State<SplashScreen>
             scale: _scale,
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: const [
-                Icon(Icons.work_rounded, size: 90, color: Colors.white),
+              children: [
+                Image.asset(
+                  height: 190,
+                  width: 190,
+                  "assets/icons/j_icon.png",
+                ), //Icon(Icons.work_rounded, size: 90, color: Colors.white),
                 SizedBox(height: 16),
                 Text(
-                  'JobFinder',
+                  'Jobs Here',
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w800,

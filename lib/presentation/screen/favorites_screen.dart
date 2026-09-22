@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:job_listing_app/presentation/provider/favourite_provider.dart';
+import 'package:job_listing_app/presentation/widget/empty_fav.dart';
 import 'package:job_listing_app/presentation/widget/job_card.dart';
 import 'package:liquid_glass_bottom_nav/liquid_glass_bottom_nav.dart';
 import 'package:provider/provider.dart';
 import '../../core/entities/job.dart';
 import 'job_details_screen.dart';
 
-/// Shows every job the user has favorited, using the same JobCard
-/// widget as the Jobs list screen for a consistent look.
-/// NOTE: currently filters mockJobs — once JobProvider/API is wired in,
-/// swap `mockJobs` below for the provider's live job list so favorites
-/// reflect real fetched jobs, not just the hardcoded set.
+
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
 
@@ -36,7 +33,7 @@ class FavoritesScreen extends StatelessWidget {
           ),
           Expanded(
             child: favoriteJobs.isEmpty
-                ? const _EmptyFavorites()
+                ? const EmptyFavorites()
                 : ListView.builder(
                     padding: EdgeInsets.fromLTRB(
                       20,
@@ -59,7 +56,7 @@ class FavoritesScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           alignment: Alignment.centerRight,
                           decoration: BoxDecoration(
-                            color: Colors.redAccent.withOpacity(0.85),
+                            color: Colors.redAccent.withValues(alpha: 0.85),
                             borderRadius: BorderRadius.circular(18),
                           ),
                           child: const Icon(Icons.delete_outline_rounded,
@@ -82,37 +79,6 @@ class FavoritesScreen extends StatelessWidget {
                   ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _EmptyFavorites extends StatelessWidget {
-  const _EmptyFavorites();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.favorite_border_rounded,
-                size: 56, color: Theme.of(context).colorScheme.outline),
-            const SizedBox(height: 12),
-            const Text('No favorites yet',
-                style: TextStyle(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 4),
-            Text(
-              'Tap the heart on any job to save it here',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-                fontSize: 13,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
